@@ -149,31 +149,12 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- Javadoc -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>${version.maven-javadoc-plugin}</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
 
     <modules>
-        <!--<module>rpc-common</module>-->
-        <!--<module>rpc-server</module>-->
-        <!--<module>rpc-client</module>-->
-        <!--<module>rpc-registry</module>-->
-        <!--<module>rpc-registry-zookeeper</module>-->
         <module>xFastRpc-server</module>
         <module>xFastRpc-client</module>
         <module>xFastRpc-common</module>
