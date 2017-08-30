@@ -44,14 +44,14 @@ public class ZooKeeperServiceDiscover implements ZkServerDiscover
         获取 address 节点
         */
         //创建zk client
-        ZkClient zkClient = new ZkClient(zkServerAdderss, zkConstant.ZK_SESSION_TIMEOUT, zkConstant.ZK_CONNECTION_TIMEOUT);
+        ZkClient zkClient = new ZkClient(zkServerAdderss, ZkConstant.ZK_SESSION_TIMEOUT, ZkConstant.ZK_CONNECTION_TIMEOUT);
         LOGGER.debug("连接到zk Server");
 
 
         try
         {
             // 获得 service 节点
-            String servicePath = zkConstant.ZK_PATH + "/" + serverName;
+            String servicePath = ZkConstant.ZK_PATH + "/" + serverName;
             List<String> addressList = zkClient.getChildren(servicePath);
             // 获得 address 节点
             String address;

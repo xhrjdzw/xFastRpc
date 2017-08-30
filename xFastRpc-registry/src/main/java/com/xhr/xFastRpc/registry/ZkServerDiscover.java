@@ -15,7 +15,7 @@ public interface ZkServerDiscover
      * @author 徐浩然
      * @version 2017-08-30
      * @param   addServerName 服务名字
-     * @return  服务复制
+     * @return  服务地址
      */
     String discover(String addServerName);
 
