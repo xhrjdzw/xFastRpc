@@ -56,7 +56,6 @@ public class ZooKeeperServiceDiscover implements ZkServerDiscover
             // 获得 address 节点
             String address;
 
-
             if (addressList.size() == 1)
             {
                 address = addressList.get(0);
@@ -68,7 +67,7 @@ public class ZooKeeperServiceDiscover implements ZkServerDiscover
             //获取 address 节点的值
             String addressPath = servicePath + "/" + address;
 
-            return  zkClient.readData(addressPath);
+            return zkClient.readData(addressPath);
         } finally
         {
             zkClient.close();
