@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xFastRpc-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xFastRpc-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xFastRpc-registry" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xFastRpc-registry-zookeeper" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xFastRpc-server" charset="UTF-8" />
   </component>
