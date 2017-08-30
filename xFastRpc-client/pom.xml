@@ -11,5 +11,19 @@
 
     <artifactId>xFastRpc-client</artifactId>
 
+    <dependencies>
+        <!-- xFastRpc Common -->
+        <dependency>
+            <groupId>com.xhr.xFastRpc</groupId>
+            <artifactId>xFastRpc-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- xFastRpc Registry with ZooKeeper -->
+        <dependency>
+            <groupId>com.xhr.xFastRpc</groupId>
+            <artifactId>xFastRpc-registry-zookeeper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

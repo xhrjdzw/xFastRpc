@@ -10,6 +10,35 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>xFastRpc-registry-zookeeper</artifactId>
-
+    <!--资源依赖-->
+    <dependencies>
+        <!-- SLF4J -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <!-- ZooKeeper -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <!-- ZkClient -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>
+        <!-- xFastRpc Common -->
+        <dependency>
+            <groupId>com.xhr.xFastRpc</groupId>
+            <artifactId>xFastRpc-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- xFastRpc Registry -->
+        <dependency>
+            <groupId>com.xhr.xFastRpc</groupId>
+            <artifactId>xFastRpc-registry</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
