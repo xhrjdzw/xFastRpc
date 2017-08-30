@@ -5,6 +5,9 @@ import org.I0Itec.zkclient.ZkClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * 探测服务接口
  *
@@ -32,7 +35,7 @@ public class ZooKeeperServiceDiscover implements ZkServerDiscover
      * @param   * @param addServerName
      * @return java.lang.String
      */
-    public String discover(String addServerName)
+    public String discover(String serverName)
     {
         //探测服务接口流程
         /*
@@ -40,7 +43,6 @@ public class ZooKeeperServiceDiscover implements ZkServerDiscover
         获取 server 节点
         获取 address 节点
         */
-
         //创建zk client
         ZkClient zkClient = new ZkClient(zkServerAdderss, zkConstant.ZK_SESSION_TIMEOUT, zkConstant.ZK_CONNECTION_TIMEOUT);
         LOGGER.debug("连接到zk Server");
@@ -48,13 +50,28 @@ public class ZooKeeperServiceDiscover implements ZkServerDiscover
 
         try
         {
-            return null;
-        } catch (Exception e)
-        {
-            e.printStackTrace();
+            // 获得 service 节点
+            String servicePath = zkConstant.ZK_PATH + "/" + serverName;
+            List<String> addressList = zkClient.getChildren(servicePath);
+            // 获得 address 节点
+            String address;
+
+
+            if (addressList.size() == 1)
+            {
+                address = addressList.get(0);
+            } else
+            {
+                address = addressList.get(ThreadLocalRandom.current().nextInt(addressList.size()));
+            }
+
+            //获取 address 节点的值
+            String addressPath = servicePath + "/" + address;
+
+            return  zkClient.readData(addressPath);
         } finally
         {
-            return null;
+            zkClient.close();
         }
     }
 }
