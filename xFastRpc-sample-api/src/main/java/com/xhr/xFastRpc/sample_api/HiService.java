@@ -1,4 +1,4 @@
-package xFastRpc.sample.api;
+package com.xhr.xFastRpc.sample_api;
 
 /**
  * @author 徐浩然

@@ -160,8 +160,8 @@
         <module>xFastRpc-common</module>
         <module>xFastRpc-registry-zookeeper</module>
         <module>xFastRpc-registry</module>
-        <module>xFastRpc-sample</module>
-        <module>xFastRpcsampleapi</module>
+        <module>xFastRpc-sample-api</module>
+        <module>xFastRpc-sample-server</module>
         <module>xFastRpc-sample-client</module>
     </modules>
 
