@@ -160,6 +160,7 @@
         <module>xFastRpc-common</module>
         <module>xFastRpc-registry-zookeeper</module>
         <module>xFastRpc-registry</module>
+        <module>xFastRpc-sample</module>
     </modules>
 
 </project>
