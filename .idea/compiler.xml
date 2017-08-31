@@ -11,8 +11,10 @@
         <module name="xFastRpc-registry" />
         <module name="xFastRpc-registry-zookeeper" />
         <module name="xFastRpc-sample" />
+        <module name="xFastRpc-sample-client" />
         <module name="xFastRpc-server" />
         <module name="xFastRpcclient" />
+        <module name="xFastRpcsampleapi" />
         <module name="xFastRpcserver" />
       </profile>
     </annotationProcessing>
@@ -23,8 +25,10 @@
       <module name="xFastRpc-registry" target="1.8" />
       <module name="xFastRpc-registry-zookeeper" target="1.8" />
       <module name="xFastRpc-sample" target="1.8" />
+      <module name="xFastRpc-sample-client" target="1.8" />
       <module name="xFastRpc-server" target="1.8" />
       <module name="xFastRpcclient" target="1.8" />
+      <module name="xFastRpcsampleapi" target="1.8" />
       <module name="xFastRpcserver" target="1.8" />
     </bytecodeTargetLevel>
   </component>

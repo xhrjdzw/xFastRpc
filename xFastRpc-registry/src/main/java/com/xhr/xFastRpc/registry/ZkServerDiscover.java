@@ -8,7 +8,6 @@ package com.xhr.xFastRpc.registry;
  */
 public interface ZkServerDiscover
 {
-
     /**
      *
      *
