@@ -12,13 +12,13 @@
     <context:property-placeholder location="classpath:rpc.properties"/>
 
 
-    <bean id="serviceRegistry" class="com.xhr.xFastRpc.registry.zookeeper.ZooKeeperServiceRegistry">
+    <bean id="zkServiceRegistry" class="com.xhr.xFastRpc.registry.zookeeper.ZooKeeperServiceRegistry">
         <constructor-arg name="zkServerAdderss" value="${registry.address}"/>
     </bean>
 
-    <bean id="rpcServer" class="com.xhr.xFastRpc.server.RpcService">
+    <bean id="rpcServer" class="com.xhr.xFastRpc.server.RcpServer">
         <constructor-arg name="serverAddress" value="${server.address}"/>
-        <constructor-arg name="serviceRegistry" ref="serviceRegistry"/>
+        <constructor-arg name="zkServiceRegistry" ref="zkServiceRegistry"/>
     </bean>
 
 </beans>
