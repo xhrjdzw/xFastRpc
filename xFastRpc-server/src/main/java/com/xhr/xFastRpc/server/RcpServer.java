@@ -109,7 +109,7 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
                             pipeline.addLast(new RpcEncoder(RpcResponse.class));
                             pipeline.addLast(new RpcServerHandler(serverObjectMap));//处理Rpc  请求
                             //解码 编码 处理 RPC 请求
-//                            pipeline.addLast(new RpcService);
+//                            pipelin e.addLast(new RpcService);
                         }
                     }
             );
