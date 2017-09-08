@@ -1,5 +1,9 @@
 package com.xhr.xFastRpc.server;
 
+import com.xhr.xFastRpc.common.bean.RpcRequest;
+import com.xhr.xFastRpc.common.bean.RpcResponse;
+import com.xhr.xFastRpc.common.codecookker.RpcDecoder;
+import com.xhr.xFastRpc.common.codecookker.RpcEncoder;
 import com.xhr.xFastRpc.registry.ZkServiceRegistry;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -101,6 +105,9 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
                         public void initChannel(SocketChannel channel) throws Exception
                         {
                             ChannelPipeline pipeline = channel.pipeline();
+                            pipeline.addLast(new RpcDecoder(RpcRequest.class));
+                            pipeline.addLast(new RpcEncoder(RpcResponse.class));
+                            pipeline.addLast(new Rpc)
                             //解码 编码 处理 RPC 请求
 //                            pipeline.addLast(new RpcService);
                         }
