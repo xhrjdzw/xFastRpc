@@ -90,7 +90,7 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
     {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        //初始化服务端 Bootstrap对象
+        //初始化服务端 Bootst   rap对象
         try
         {
 
