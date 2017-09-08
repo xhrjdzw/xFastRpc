@@ -107,7 +107,7 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
                             ChannelPipeline pipeline = channel.pipeline();
                             pipeline.addLast(new RpcDecoder(RpcRequest.class));
                             pipeline.addLast(new RpcEncoder(RpcResponse.class));
-                            pipeline.addLast(new Rpc)
+                            pipeline.addLast(new RpcServerHandler(serverObjectMap));//处理Rpc  请求
                             //解码 编码 处理 RPC 请求
 //                            pipeline.addLast(new RpcService);
                         }
