@@ -97,6 +97,11 @@
             <artifactId>xFastRpc-registry-zookeeper</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.xhr.xFastRpc</groupId>
+            <artifactId>xFastRpc-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
