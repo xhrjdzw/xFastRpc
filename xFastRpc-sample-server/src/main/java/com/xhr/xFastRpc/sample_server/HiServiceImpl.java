@@ -21,6 +21,6 @@ public class HiServiceImpl implements HiService
     @Override
     public String hello(MyName myname)
     {
-        return "Hi jvavavavavav !" + myname.getFirstName() + " " + myname.getLastName();
+        return "Hi jvavavavavava !" + myname.getFirstName() + " " + myname.getLastName();
     }
 }
