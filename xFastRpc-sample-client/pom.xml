@@ -91,6 +91,12 @@
             <artifactId>xFastRpc-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- xFastRpc Api -->
+        <dependency>
+            <groupId>com.xhr.xFastRpc</groupId>
+            <artifactId>xFastRpc-sample-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- xFastRpc Registry with ZooKeeper -->
         <dependency>
             <groupId>com.xhr.xFastRpc</groupId>
