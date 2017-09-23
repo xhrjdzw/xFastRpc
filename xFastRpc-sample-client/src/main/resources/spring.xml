@@ -11,7 +11,7 @@
 
     <context:property-placeholder location="classpath:rpc.properties"/>
 
-1
+11
     <bean id="zkServerDiscover" class="com.xhr.xFastRpc.registry.zookeeper.ZooKeeperServiceDiscover">
         <constructor-arg name="zkServerAdderss" value="${registry.address}"/>
     </bean>
