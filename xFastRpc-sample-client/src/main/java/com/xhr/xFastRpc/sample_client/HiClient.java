@@ -4,7 +4,6 @@ import com.xhr.xFastRpc.client.xFastRpcProxy;
 import com.xhr.xFastRpc.sample_api.HiService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.xhr.xFastRpc.
 /**
  * @author 徐浩然
  * @version HiClient, 2017-09-23
