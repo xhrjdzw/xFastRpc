@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class RpcBootstrap
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(RpcBootstrap.class);
-    //test
+    //t est
     public static void main(String[] args) {
         LOGGER.debug("start server");
         new ClassPathXmlApplicationContext("spring.xml");
