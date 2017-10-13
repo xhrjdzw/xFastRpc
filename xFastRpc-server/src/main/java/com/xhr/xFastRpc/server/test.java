@@ -9,30 +9,39 @@ import java.util.List;
  */
 public class test
 {
+
+
+
     public static void main(String[] args)
     {
         Animal a1 = new Dog();
-        a1.shout();//编译通过
-        a1.shout();//编译出错
-        Dog d1 = new Dog();
-        List list = new ArrayList();
-        ArrayList arrayList = new ArrayList();
-        list.trimToSize();//错误，没有该方法。
-        arrayList.trimToSize();//ArrayList里有该方法。
+        // a1.shout();//编译通过
+        a1.guard();//编译出错
+//        Dog d1 = new Dog();
+//        List list = new ArrayList();
+//        ArrayList arrayList = new ArrayList();
+//        list.trimToSize();//错误，没有该方法。
+//        arrayList.trimToSize();//ArrayList里有该方法。
 
     }
-}
 
+
+
+}
 abstract class Animal
 {
     //动物名字
     String name;
 
-    //动物叫声
-    public void shout()
+    public void guard()
     {
-        System.out.println("叫声...");
+        System.out.println("独特本领！");
     }
+    //动物叫声
+//   // public void shout()
+//    {
+//        System.out.println("叫声...");
+//    }
 }
 
 class Dog extends Animal
@@ -40,7 +49,9 @@ class Dog extends Animal
     //狗类独有的方法
     public void guard()
     {
+        super.guard();
+
         System.out.println("狗有看门的独特本领！");
     }
-}
+
 }
