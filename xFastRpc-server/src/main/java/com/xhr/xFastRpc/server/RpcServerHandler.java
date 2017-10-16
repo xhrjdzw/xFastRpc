@@ -33,7 +33,7 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest>
 
     /*
     *创建同时初始化Rpc 响应对象
-    *写入 RPc 响应对象然后 关闭连接*/
+    *写入 RPc 响应对象然 后 关闭连接*/
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, RpcRequest request) throws Exception
     {
