@@ -37,6 +37,7 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest>
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, RpcRequest request) throws Exception
     {
+        // 创建并初始化 RPC 响应对象
         RpcResponse response = new RpcResponse();
         response.setRequestId(request.getServiceVersion());
         try
@@ -64,11 +65,13 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest>
             throw new  RuntimeException("serviceBean is Fucked off");
         }
         //反射
+        // 获取反射调用所需的参数
         Class<?> serviceClass = serviceBean.getClass();
         String methodName = request.getMethodName();
         Class<?>[] parameterTypes = request.getParameterTypes();
         Object[] parameters = request.getParameters();
         //反射调用[反射调用方式]
+        // CGLib 执行反射调用
         FastClass serviceFastClass = FastClass.create(serviceClass);
         FastMethod serviceFastMethod = serviceFastClass.getMethod(methodName , parameterTypes);
         return  serviceFastMethod.invoke(serviceBean, parameters);

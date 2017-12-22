@@ -8,5 +8,5 @@ public interface ZkConstant
 {
     int ZK_SESSION_TIMEOUT = 20000;
     int ZK_CONNECTION_TIMEOUT = 10000;
-    String  ZK_PATH = "/xhr";
+    String  ZK_PATH = "/xhr1";
 }

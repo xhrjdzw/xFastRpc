@@ -69,7 +69,7 @@ public class ZooKeeperServiceRegistry implements ZkServiceRegistry
             }
         }
         //创建一个 address 节点 这是一个临时的节点
-        String addressPath = servicePath + "xuAddress-";
+        String addressPath = servicePath + "/address-";
         //返回节点全部地址
         String addressNode = zkClient.createEphemeralSequential(addressPath,serviceAddress);
         LOGGER.error("成功创建节点",addressNode);

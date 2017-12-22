@@ -53,7 +53,7 @@ public class xFastRpcClient extends SimpleChannelInboundHandler<RpcResponse>
 
         try
         {
-            //初始化客户端
+            //创建并初始化 Netty 客户端 Bootstrap 对象
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(group);
             bootstrap.channel(NioSocketChannel.class);
@@ -63,8 +63,11 @@ public class xFastRpcClient extends SimpleChannelInboundHandler<RpcResponse>
                                   public void initChannel(SocketChannel channel) throws Exception
                                   {
                                       ChannelPipeline pipeline = channel.pipeline();
+                                      // 编码 RPC 请求
                                       pipeline.addLast(new RpcEncoder(RpcRequest.class));
+                                      // 解码 RPC 响应
                                       pipeline.addLast(new RpcDecoder(RpcResponse.class));
+                                      // 处理 RPC 响应
                                       pipeline.addLast(xFastRpcClient.this);
                                   }
                               }

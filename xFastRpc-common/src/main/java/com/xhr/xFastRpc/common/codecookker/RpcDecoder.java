@@ -9,12 +9,13 @@ import java.util.List;
 
 /**
  * Rpc 解码器
+ *
  * @author 徐浩然
  * @version RpcDecoder, 2017-09-07
  */
 public class RpcDecoder extends ByteToMessageDecoder
 {
-    private  Class<?> genericClass;
+    private Class<?> genericClass;
 
     public RpcDecoder(Class<?> genericClass)
     {
@@ -22,21 +23,45 @@ public class RpcDecoder extends ByteToMessageDecoder
     }
 
     @Override
-    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception
+    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception
     {
-        if (in.readableBytes() <4)
+        if (byteBuf.readableBytes() < 4)
+
         {
             return;
         }
-        in.markReaderIndex();
-        int dataLength = in.readInt();
-        if (in.readableBytes() == in.readInt())
+        byteBuf.markReaderIndex();
+        short magic = byteBuf.readShort();
+//        if (magic != Constants.MAGIC)
+//
+//        {
+//            byteBuf.resetReaderIndex();
+//            throw new ForestFrameworkException("ForestDecoder transport header not support, type: " + magic);
+//        }
+
+        byte version = byteBuf.readByte();
+        byte extend = byteBuf.readByte();
+        long messageID = byteBuf.readLong();
+        int size = byteBuf.readInt();
+        Object req = null;
+        if (!(size == 0 && EventType.typeofHeartBeat(extend)))
+
         {
-            in.resetReaderIndex();
-            return;
+            if (byteBuf.readableBytes() < size)
+            {
+                byteBuf.resetReaderIndex();
+                return;
+            }
+            // TODO 限制最大包长
+            byte[] payload = new byte[size];
+            byteBuf.readBytes(payload);
+            Serialization serialization = SerializeType.getSerializationByExtend(extend);
+            Compress compress = CompressType.getCompressTypeByValueByExtend(extend);
+            req = serialization.deserialize(compress.unCompress(payload), MessageType.getMessageTypeByExtend(extend));
         }
-        byte[] data = new byte[dataLength];
-        in.readBytes(data);
-        out.add(SerializationUtil.deserialize(data,genericClass));
+
+        Header header = new Header(magic, version, extend, messageID, size);
+        Message message = new Message(header, req);
+        list.add(message);
     }
 }

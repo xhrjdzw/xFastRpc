@@ -9,5 +9,5 @@ public interface HiService
 
     String hello(String name);
 
-    String hello(MyName myname);
+//    String hello(MyName myname);
 }

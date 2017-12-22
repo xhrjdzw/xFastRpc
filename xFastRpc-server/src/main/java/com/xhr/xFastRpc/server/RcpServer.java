@@ -42,6 +42,7 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
 
     /**
      * 服务的名字和对象的关系需要保存
+     * 存放 服务名 与 服务对象 之间的映射关系
      */
     private Map<String, Object> serverObjectMap = new HashMap<>();
 
@@ -67,6 +68,7 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException
     {
+        // 扫描带有 RpcService 注解的类并初始化 handlerMap 对象
         Map<String, Object> serviceBeanMap = applicationContext.getBeansWithAnnotation(RpcService.class);
         if (MapUtils.isNotEmpty(serviceBeanMap))
         {
@@ -90,7 +92,7 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
     {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        //初始化服务端 Bootst   rap对象
+        //初始化服务端 Bootstrap对象
         try
         {
 
@@ -108,8 +110,6 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
                             pipeline.addLast(new RpcDecoder(RpcRequest.class));
                             pipeline.addLast(new RpcEncoder(RpcResponse.class));
                             pipeline.addLast(new RpcServerHandler(serverObjectMap));//处理Rpc  请求
-                            //解码 编码 处理 RPC 请求
-//                            pipelin e.addLast(new RpcService);
                         }
                     }
             );
@@ -129,9 +129,10 @@ public class RcpServer implements ApplicationContextAware, InitializingBean
                 for (String interfaceName : serverObjectMap.keySet())
                 {
                     zkServiceRegistry.registry(interfaceName, serverAddress);
-                    LOGGER.debug("开始注册服务:   ", interfaceName + "   " + serverAddress);
+                    LOGGER.debug("开始注册服务register service: {} => {} ", interfaceName + "   " + serverAddress);
                 }
             }
+            LOGGER.debug("server started on port {}", port);
             //关闭rpc服务器
             future.channel().closeFuture().sync();
         } finally
